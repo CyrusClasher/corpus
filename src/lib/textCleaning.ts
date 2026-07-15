@@ -20,7 +20,7 @@ export function normalizeWord(word: string): string {
     return word.slice(0, -1);
   return word;
 }
-function cleanText(rawText: string): string {
+export function cleanText(rawText: string): string {
   let text = toLowerCase(rawText);
   text = removePunctuation(text);
   text = removeSpecialCharacters(text);
