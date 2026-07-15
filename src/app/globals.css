@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Theme tokens for Corpus.
+  Palette: warm paper/ink neutrals (this is a "library index" product, not
+  a generic SaaS blue) with a single indexed-amber accent (#B4650B-ish in
+  HSL) used sparingly for the one interactive/brand moment per screen.
+*/
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 20 14% 12%;
+    --card: 40 30% 100%;
+    --card-foreground: 20 14% 12%;
+    --popover: 40 30% 100%;
+    --popover-foreground: 20 14% 12%;
+    --primary: 20 14% 12%;
+    --primary-foreground: 40 33% 98%;
+    --muted: 40 20% 93%;
+    --muted-foreground: 20 8% 40%;
+    --accent: 28 87% 38%;
+    --accent-foreground: 40 33% 98%;
+    --destructive: 6 78% 45%;
+    --destructive-foreground: 40 33% 98%;
+    --border: 30 15% 87%;
+    --input: 30 15% 87%;
+    --ring: 28 87% 38%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 20 16% 9%;
+    --foreground: 40 20% 94%;
+    --card: 20 14% 12%;
+    --card-foreground: 40 20% 94%;
+    --popover: 20 14% 12%;
+    --popover-foreground: 40 20% 94%;
+    --primary: 40 20% 94%;
+    --primary-foreground: 20 16% 9%;
+    --muted: 20 10% 17%;
+    --muted-foreground: 30 8% 65%;
+    --accent: 30 80% 55%;
+    --accent-foreground: 20 16% 9%;
+    --destructive: 6 70% 55%;
+    --destructive-foreground: 20 16% 9%;
+    --border: 20 10% 20%;
+    --input: 20 10% 20%;
+    --ring: 30 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+  }
+  mark {
+    @apply bg-accent/25 text-inherit rounded-[3px] px-0.5;
+  }
+}
