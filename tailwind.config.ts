@@ -40,6 +40,8 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        "tab-teal": "hsl(var(--tab-teal))",
+        "tab-coral": "hsl(var(--tab-coral))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -55,10 +57,15 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(4px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "rise-in": {
+          from: { opacity: "0", transform: "translateY(28px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         shimmer: { "100%": { transform: "translateX(100%)" } },
       },
       animation: {
         "fade-in": "fade-in 0.3s ease-out",
+        "rise-in": "rise-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards",
         shimmer: "shimmer 1.6s infinite",
       },
     },

@@ -2,52 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Theme tokens for Corpus.
-  Palette: warm paper/ink neutrals (this is a "library index" product, not
-  a generic SaaS blue) with a single indexed-amber accent (#B4650B-ish in
-  HSL) used sparingly for the one interactive/brand moment per screen.
-*/
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 20 14% 12%;
-    --card: 40 30% 100%;
-    --card-foreground: 20 14% 12%;
-    --popover: 40 30% 100%;
-    --popover-foreground: 20 14% 12%;
-    --primary: 20 14% 12%;
-    --primary-foreground: 40 33% 98%;
-    --muted: 40 20% 93%;
-    --muted-foreground: 20 8% 40%;
-    --accent: 28 87% 38%;
-    --accent-foreground: 40 33% 98%;
-    --destructive: 6 78% 45%;
-    --destructive-foreground: 40 33% 98%;
-    --border: 30 15% 87%;
-    --input: 30 15% 87%;
-    --ring: 28 87% 38%;
+    --background: 210 20% 97%;
+    --foreground: 224 40% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 40% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 40% 11%;
+    --primary: 224 40% 11%;
+    --primary-foreground: 210 20% 97%;
+    --muted: 214 18% 92%;
+    --muted-foreground: 220 14% 40%;
+    --accent: 45 96% 51%;
+    --accent-foreground: 224 40% 11%;
+    --destructive: 355 75% 48%;
+    --destructive-foreground: 210 20% 97%;
+    --border: 216 16% 87%;
+    --input: 216 16% 87%;
+    --ring: 45 96% 45%;
     --radius: 0.625rem;
+
+    /* Index-tab accents — landing page only, see components/landing */
+    --tab-teal: 168 70% 32%;
+    --tab-coral: 8 78% 58%;
   }
 
   .dark {
-    --background: 20 16% 9%;
-    --foreground: 40 20% 94%;
-    --card: 20 14% 12%;
-    --card-foreground: 40 20% 94%;
-    --popover: 20 14% 12%;
-    --popover-foreground: 40 20% 94%;
-    --primary: 40 20% 94%;
-    --primary-foreground: 20 16% 9%;
-    --muted: 20 10% 17%;
-    --muted-foreground: 30 8% 65%;
-    --accent: 30 80% 55%;
-    --accent-foreground: 20 16% 9%;
-    --destructive: 6 70% 55%;
-    --destructive-foreground: 20 16% 9%;
-    --border: 20 10% 20%;
-    --input: 20 10% 20%;
-    --ring: 30 80% 55%;
+    --background: 226 32% 8%;
+    --foreground: 210 24% 94%;
+    --card: 226 28% 11%;
+    --card-foreground: 210 24% 94%;
+    --popover: 226 28% 11%;
+    --popover-foreground: 210 24% 94%;
+    --primary: 210 24% 94%;
+    --primary-foreground: 226 32% 8%;
+    --muted: 224 20% 16%;
+    --muted-foreground: 218 12% 65%;
+    --accent: 45 96% 58%;
+    --accent-foreground: 226 32% 8%;
+    --destructive: 355 78% 60%;
+    --destructive-foreground: 226 32% 8%;
+    --border: 224 18% 19%;
+    --input: 224 18% 19%;
+    --ring: 45 96% 58%;
+
+    --tab-teal: 168 55% 48%;
+    --tab-coral: 8 85% 66%;
   }
 }
 
@@ -55,11 +56,45 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "cv11", "ss01";
   }
+
   mark {
-    @apply bg-accent/25 text-inherit rounded-[3px] px-0.5;
+    /* The whole product's job, rendered literally: a real highlighter
+       stroke, not a tinted-background approximation. */
+    @apply relative rounded-[2px] bg-accent/70 px-0.5 text-inherit;
+  }
+
+  ::selection {
+    @apply bg-accent/40;
+  }
+}
+
+@layer utilities {
+
+  /* A soft ambient glow in the accent color, for the one or two elements
+     per screen that should feel alive (primary CTA, hovered feature card).
+     Kept as an opt-in utility rather than a global hover state so it stays
+     meaningful instead of decorating everything. */
+  .glow-accent {
+    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.4), 0 8px 30px -8px hsl(var(--accent) / 0.55);
+  }
+
+  .glow-accent-hover {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .glow-accent-hover:hover {
+    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.35), 0 12px 36px -10px hsl(var(--accent) / 0.5);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow-accent-hover:hover {
+      transform: none;
+    }
   }
 }
