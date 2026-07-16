@@ -5,10 +5,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Corpus — Document Indexing & Search",
-  description: "Upload documents and search them instantly with a real inverted index.",
+  description:
+    "Upload documents and search them instantly with a real inverted index.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen font-sans antialiased">
