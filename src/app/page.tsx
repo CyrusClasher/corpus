@@ -6,6 +6,13 @@ import { LandingNav } from "@/components/landing/landing-nav";
 import { Reveal } from "@/components/landing/reveal";
 import { Library, Search, Layers, Gauge, ArrowRight } from "lucide-react";
 
+export const metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+};
+
 const DEMO_SENTENCE = "Amazon develops cloud computing services.";
 const DEMO_TOKENS = [
   { word: "amazon", tab: "gold" },
